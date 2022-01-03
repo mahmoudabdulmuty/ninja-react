@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [events, setEvents] = useState([
+		{
+			title: 'Reading Quran',
+			id: 1
+		},
+		{
+			title: 'Praying',
+			id: 2
+		},
+		{
+			title: 'Studying React',
+			id: 3
+		}
+	]);
+
+	const eventsElements = events.map((event) => (
+		<h2 key={event.id}>{event.title}</h2>
+	));
+	return <div className="App">{eventsElements}</div>;
 }
 
 export default App;
