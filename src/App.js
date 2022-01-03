@@ -1,5 +1,6 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
+import Title from './components/Title';
 
 function App() {
 	const [events, setEvents] = useState([
@@ -34,10 +35,11 @@ function App() {
 	));
 	return (
 		<div className="App">
-			{isShown && <div>{eventsElements}</div>}
+			<Title />
 			<button onClick={() => setIsShown((prevShown) => !prevShown)}>
 				{isShown ? 'Hide' : 'Show'}
 			</button>
+			{isShown && <div>{eventsElements}</div>}
 		</div>
 	);
 }
