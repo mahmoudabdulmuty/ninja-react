@@ -35,7 +35,7 @@ function App() {
 	));
 	return (
 		<div className="App">
-			<Title />
+			<Title title="My events" />
 			<button onClick={() => setIsShown((prevShown) => !prevShown)}>
 				{isShown ? 'Hide' : 'Show'}
 			</button>

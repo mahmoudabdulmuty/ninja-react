@@ -1,7 +1,7 @@
-export default function Title() {
+export default function Title({ title }) {
 	return (
 		<div>
-			<h1 className="title">Mario</h1>
+			<h1 className="title">{title}</h1>
 		</div>
 	);
 }
