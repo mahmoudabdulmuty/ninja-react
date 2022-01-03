@@ -16,6 +16,7 @@ function App() {
 			id: 3
 		}
 	]);
+	const [isShown, setIsShown] = useState(true);
 
 	const handleDelete = (id) => {
 		setEvents((prevEvents) => {
@@ -26,12 +27,19 @@ function App() {
 	};
 
 	const eventsElements = events.map((event) => (
-		<Fragment key={event.id}>
+		<div key={event.id}>
 			<h2>{event.title}</h2>
 			<button onClick={() => handleDelete(event.id)}>Delete</button>
-		</Fragment>
+		</div>
 	));
-	return <div className="App">{eventsElements}</div>;
+	return (
+		<div className="App">
+			{isShown && <div>{eventsElements}</div>}
+			<button onClick={() => setIsShown((prevShown) => !prevShown)}>
+				{isShown ? 'Hide' : 'Show'}
+			</button>
+		</div>
+	);
 }
 
 export default App;
