@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -17,8 +17,19 @@ function App() {
 		}
 	]);
 
+	const handleDelete = (id) => {
+		setEvents((prevEvents) => {
+			return prevEvents.filter((prevEvent) => {
+				return prevEvent.id !== id;
+			});
+		});
+	};
+
 	const eventsElements = events.map((event) => (
-		<h2 key={event.id}>{event.title}</h2>
+		<Fragment key={event.id}>
+			<h2>{event.title}</h2>
+			<button onClick={() => handleDelete(event.id)}>Delete</button>
+		</Fragment>
 	));
 	return <div className="App">{eventsElements}</div>;
 }
