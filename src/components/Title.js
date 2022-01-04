@@ -1,7 +1,8 @@
-export default function Title({ title }) {
+export default function Title({ title, subtitle }) {
 	return (
-		<div>
+		<>
 			<h1 className="title">{title}</h1>
-		</div>
+			<p className="sub-title">{subtitle}</p>
+		</>
 	);
 }
