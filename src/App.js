@@ -19,6 +19,11 @@ function App() {
 		}
 	]);
 	const [isShown, setIsShown] = useState(true);
+	const [showModal, setShowModal] = useState(true);
+
+	const handleModal = () => {
+		setShowModal((prevShowModal) => !prevShowModal);
+	};
 
 	const handleDelete = (id) => {
 		setEvents((prevEvents) => {
@@ -41,10 +46,12 @@ function App() {
 				{isShown ? 'Hide' : 'Show'}
 			</button>
 			{isShown && <>{eventsElements}</>}
-			<Modal>
-				<h2>10% Off Coupon Code!!</h2>
-				<p>Use the code NINJA10 at the checkout</p>
-			</Modal>
+			{showModal && (
+				<Modal handleModal={handleModal}>
+					<h2>10% Off Coupon Code!!</h2>
+					<p>Use the code NINJA10 at the checkout</p>
+				</Modal>
+			)}
 		</div>
 	);
 }
