@@ -1,5 +1,6 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
+import EventList from './components/EventList';
 import Modal from './components/Modal';
 import Title from './components/Title';
 
@@ -33,19 +34,15 @@ function App() {
 		});
 	};
 
-	const eventsElements = events.map((event) => (
-		<Fragment key={event.id}>
-			<h2>{event.title}</h2>
-			<button onClick={() => handleDelete(event.id)}>Delete</button>
-		</Fragment>
-	));
 	return (
 		<div className="App">
 			<Title title="My events" subtitle="this is subtitle" />
 			<button onClick={() => setIsShown((prevShown) => !prevShown)}>
 				{isShown ? 'Hide' : 'Show'}
 			</button>
-			{isShown && <>{eventsElements}</>}
+			{isShown && (
+				<EventList events={events} handleDelete={(id) => handleDelete(id)} />
+			)}
 			{showModal && (
 				<Modal handleModal={handleModal}>
 					<h2>10% Off Coupon Code!!</h2>
