@@ -19,7 +19,7 @@ function App() {
 		}
 	]);
 	const [isShown, setIsShown] = useState(true);
-	const [showModal, setShowModal] = useState(true);
+	const [showModal, setShowModal] = useState(false);
 
 	const handleModal = () => {
 		setShowModal((prevShowModal) => !prevShowModal);
@@ -52,6 +52,9 @@ function App() {
 					<p>Use the code NINJA10 at the checkout</p>
 				</Modal>
 			)}
+			<button style={{ display: 'block' }} onClick={() => setShowModal(true)}>
+				Show Modal
+			</button>
 		</div>
 	);
 }
