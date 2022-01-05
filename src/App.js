@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import EventList from './components/EventList';
 import Modal from './components/Modal';
@@ -6,10 +6,16 @@ import NewEventForm from './components/NewEventForm';
 import Title from './components/Title';
 
 function App() {
-	const [events, setEvents] = useState([]);
+	const [events, setEvents] = useState(
+		JSON.parse(localStorage.getItem('events'))
+	);
 	const [isShown, setIsShown] = useState(true);
 	const [showModal, setShowModal] = useState(false);
-	console.log(events);
+
+	useEffect(() => {
+		localStorage.setItem('events', JSON.stringify(events));
+	}, [events]);
+
 	const addEvents = (event) => {
 		setEvents((prevEvents) => {
 			return [...prevEvents, event];
