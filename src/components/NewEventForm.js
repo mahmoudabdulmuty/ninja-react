@@ -19,11 +19,21 @@ export default function NewEventForm() {
       <input type="text" id="title" /> */}
 			<label>
 				<span>Event Title:</span>
-				<input type="text" onChange={handleChange} name="title" />
+				<input
+					type="text"
+					onChange={handleChange}
+					name="title"
+					value={FormData.title}
+				/>
 			</label>
 			<label>
 				<span>Event Date:</span>
-				<input type="date" onChange={handleChange} name="date" />
+				<input
+					type="date"
+					onChange={handleChange}
+					name="date"
+					value={FormData.date}
+				/>
 			</label>
 			<p>
 				{formData.title} {formData.date}

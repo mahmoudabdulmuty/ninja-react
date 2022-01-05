@@ -23,8 +23,8 @@ function App() {
 	const [isShown, setIsShown] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 
-	const handleModal = () => {
-		setShowModal((prevShowModal) => !prevShowModal);
+	const handleClose = () => {
+		setShowModal(false);
 	};
 
 	const handleDelete = (id) => {
@@ -43,7 +43,7 @@ function App() {
 			</button>
 			{isShown && <EventList events={events} handleDelete={handleDelete} />}
 			{showModal && (
-				<Modal handleModal={handleModal} isSalesModal={true}>
+				<Modal handleClose={handleClose} isSalesModal={true}>
 					<h2>10% Off Coupon Code!!</h2>
 					<p>Use the code NINJA10 at the checkout</p>
 					<NewEventForm />
