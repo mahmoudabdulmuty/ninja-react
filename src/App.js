@@ -40,16 +40,14 @@ function App() {
 			<button onClick={() => setIsShown((prevShown) => !prevShown)}>
 				{isShown ? 'Hide' : 'Show'}
 			</button>
-			{isShown && (
-				<EventList events={events} handleDelete={(id) => handleDelete(id)} />
-			)}
+			{isShown && <EventList events={events} handleDelete={handleDelete} />}
 			{showModal && (
 				<Modal handleModal={handleModal}>
 					<h2>10% Off Coupon Code!!</h2>
 					<p>Use the code NINJA10 at the checkout</p>
 				</Modal>
 			)}
-			<button style={{ display: 'block' }} onClick={() => setShowModal(true)}>
+			<button onClick={() => setShowModal(true)}>
 				Show Modal
 			</button>
 		</div>
