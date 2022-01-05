@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './NewEventForm.css';
 
-export default function NewEventForm() {
+export default function NewEventForm({ addEvents }) {
 	const [formData, setFormData] = useState({
 		title: '',
 		date: ''
@@ -13,8 +13,18 @@ export default function NewEventForm() {
 		});
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const event = {
+			title: formData.title,
+			date: formData.date,
+			id: Math.random()
+		};
+		addEvents(event);
+	};
+
 	return (
-		<form className="new-event-form">
+		<form className="new-event-form" onSubmit={handleSubmit}>
 			{/* <label htmlFor="title">Event Title:</label>
       <input type="text" id="title" /> */}
 			<label>
@@ -35,9 +45,6 @@ export default function NewEventForm() {
 					value={FormData.date}
 				/>
 			</label>
-			<p>
-				{formData.title} {formData.date}
-			</p>
 			<button>Submit</button>
 		</form>
 	);
