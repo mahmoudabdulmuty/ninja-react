@@ -7,7 +7,7 @@ import Title from './components/Title';
 
 function App() {
 	const [events, setEvents] = useState(
-		JSON.parse(localStorage.getItem('events'))
+		JSON.parse(localStorage.getItem('events') || [])
 	);
 	const [isShown, setIsShown] = useState(true);
 	const [showModal, setShowModal] = useState(false);
